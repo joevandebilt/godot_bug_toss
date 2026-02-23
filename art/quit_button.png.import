@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxtxfpam7stsm"
-path="res://.godot/imported/dog_left.png-782de99ea721027c1a76b91fd8e5714f.ctex"
+uid="uid://c4g3p3g45rbqy"
+path="res://.godot/imported/quit_button.png-157cec71f13fc826b89be68d6bcbf0bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/dog_left.png"
-dest_files=["res://.godot/imported/dog_left.png-782de99ea721027c1a76b91fd8e5714f.ctex"]
+source_file="res://art/quit_button.png"
+dest_files=["res://.godot/imported/quit_button.png-157cec71f13fc826b89be68d6bcbf0bb.ctex"]
 
 [params]
 

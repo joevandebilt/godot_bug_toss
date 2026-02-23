@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkgvm5qhpal5f"]
 
 [ext_resource type="Script" uid="uid://bo8tbvf6pgimi" path="res://scripts/Player.cs" id="1_tpt06"]
-[ext_resource type="Texture2D" uid="uid://gyr7wxgetct0" path="res://art/dog_right.png" id="2_rgld7"]
+[ext_resource type="Texture2D" uid="uid://glasbxye2lt1" path="res://art/dog_walk.png" id="2_rgld7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8pr3"]
 atlas = ExtResource("2_rgld7")
@@ -9,7 +9,15 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6lu3"]
 atlas = ExtResource("2_rgld7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpt06"]
+atlas = ExtResource("2_rgld7")
 region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ffl"]
+atlas = ExtResource("2_rgld7")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0fpt2"]
 animations = [{
@@ -19,6 +27,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j6lu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpt06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16ffl")
 }],
 "loop": true,
 "name": &"walk",
@@ -26,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8pr3"]
-size = Vector2(87, 20)
+size = Vector2(36, 40)
 
 [node name="Node2D" type="Node2D" unique_id=1647223057]
 
@@ -35,6 +49,7 @@ size = Vector2(87, 20)
 [node name="Player" type="Area2D" parent="." unique_id=1772675278]
 position = Vector2(3, 34)
 script = ExtResource("1_tpt06")
+Speed = 600
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=282322879]
@@ -43,5 +58,5 @@ sprite_frames = SubResource("SpriteFrames_0fpt2")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=226227958]
-position = Vector2(0.5, -8)
+position = Vector2(31, -13)
 shape = SubResource("RectangleShape2D_a8pr3")

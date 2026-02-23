@@ -43,7 +43,7 @@ public partial class Player : Area2D
 			playerSprite.Stop();
 		}
 		
-		var halfX = ScreenSize.X / 2;
+		var halfX = (ScreenSize.X / 2)-100;
 		Position += velocity * (float)delta;
 		Position = new Vector2(
 			x: Mathf.Clamp(Position.X, 0-halfX,0+halfX),

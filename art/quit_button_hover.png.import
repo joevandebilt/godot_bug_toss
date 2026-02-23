@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gyr7wxgetct0"
-path="res://.godot/imported/dog_right.png-e71d2ad546b4bb22db8fda009f3394aa.ctex"
+uid="uid://bs0dptf64dwwn"
+path="res://.godot/imported/quit_button_hover.png-24151082ba0f9dccc45db0bcf16d8048.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/dog_right.png"
-dest_files=["res://.godot/imported/dog_right.png-e71d2ad546b4bb22db8fda009f3394aa.ctex"]
+source_file="res://art/quit_button_hover.png"
+dest_files=["res://.godot/imported/quit_button_hover.png-24151082ba0f9dccc45db0bcf16d8048.ctex"]
 
 [params]
 
