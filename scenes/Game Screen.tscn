@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo8tbvf6pgimi" path="res://scripts/Player.cs" id="1_tpt06"]
 [ext_resource type="Texture2D" uid="uid://glasbxye2lt1" path="res://art/dog_walk.png" id="2_rgld7"]
+[ext_resource type="Texture2D" uid="uid://c7vorg6ee0gpu" path="res://art/background.png" id="3_0bgtt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8pr3"]
 atlas = ExtResource("2_rgld7")
@@ -47,7 +48,8 @@ size = Vector2(36, 40)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1784869693]
 
 [node name="Player" type="Area2D" parent="." unique_id=1772675278]
-position = Vector2(3, 34)
+z_index = 1
+position = Vector2(0, 272)
 script = ExtResource("1_tpt06")
 Speed = 600
 metadata/_edit_group_ = true
@@ -60,3 +62,11 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=226227958]
 position = Vector2(31, -13)
 shape = SubResource("RectangleShape2D_a8pr3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1333184391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0bgtt")
