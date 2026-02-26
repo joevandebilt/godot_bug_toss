@@ -11,7 +11,7 @@ public partial class MainMenu : Node
 		GetNode<TextureButton>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Quit Button").Pressed += quitGame;
 	}
 
-	private void newGame() => GetTree().ChangeSceneToFile("res://scenes/Game Screen.tscn");
-	private void hiScore() => GetTree().ChangeSceneToFile("res://scenes/HiScore.tscn");
+	private void newGame() => GetTree().ChangeSceneToFile("res://scenes/Game-Screen.tscn");
+	private void hiScore() => GetTree().ChangeSceneToFile("res://scenes/Hi-Score.tscn");
 	private void quitGame() =>	GetTree().Quit();
 }
