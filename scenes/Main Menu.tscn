@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dc2kj5vlfw1yd"]
 
 [ext_resource type="Texture2D" uid="uid://dsxs3ykruur48" path="res://art/new_game_button.png" id="1_estw7"]
+[ext_resource type="Script" uid="uid://5h34y02irtga" path="res://scripts/MainMenu.cs" id="1_im4cs"]
 [ext_resource type="Texture2D" uid="uid://bs0dptf64dwwn" path="res://art/quit_button_hover.png" id="2_15uo5"]
 [ext_resource type="Texture2D" uid="uid://t3p7kpkliw18" path="res://art/new_game_button_hover.png" id="2_mslyy"]
-[ext_resource type="Script" uid="uid://4lor7fi0nbno" path="res://scripts/ChangeScene.gd" id="3_im4cs"]
 [ext_resource type="Texture2D" uid="uid://bvf53edoudxkt" path="res://art/hi_scores_button.png" id="3_mslyy"]
 [ext_resource type="Texture2D" uid="uid://trlvlc3nqd4o" path="res://art/hi_scores_button_hover.png" id="4_chhbp"]
 [ext_resource type="Texture2D" uid="uid://c4g3p3g45rbqy" path="res://art/quit_button.png" id="4_im4cs"]
@@ -16,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_im4cs")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1692863028]
 layout_mode = 0
@@ -43,7 +44,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 texture_normal = ExtResource("1_estw7")
 texture_hover = ExtResource("2_mslyy")
-script = ExtResource("3_im4cs")
 
 [node name="Hi Scores Button" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1963927841]
 layout_mode = 2
@@ -51,7 +51,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 texture_normal = ExtResource("3_mslyy")
 texture_hover = ExtResource("4_chhbp")
-script = ExtResource("3_im4cs")
 
 [node name="Quit Button" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1324532257]
 layout_mode = 2
@@ -60,7 +59,6 @@ size_flags_stretch_ratio = 10.0
 action_mode = 0
 texture_normal = ExtResource("4_im4cs")
 texture_hover = ExtResource("2_15uo5")
-script = ExtResource("3_im4cs")
 
 [node name="Game Logo" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=301881003]
 layout_mode = 2
@@ -73,7 +71,3 @@ text = "Version 0.1
 Joeborder Games"
 horizontal_alignment = 1
 vertical_alignment = 2
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/New Game Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/New Game Button" method="LoadNewGame"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Hi Scores Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/New Game Button" method="LoadHighScores"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Quit Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Quit Button" method="KillGame"]
