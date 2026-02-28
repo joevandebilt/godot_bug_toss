@@ -1,20 +1,23 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class Player : Area2D
 {
 	[Export]
-	public int Speed {get;set;} = 400;
-	
+	public int Speed { get; set; } = 400;
+
 	public Vector2 ScreenSize;
-	
+
 	private AnimatedSprite2D playerSprite;
-	
+
+	private int score = 0;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
-		playerSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,12 +45,17 @@ public partial class Player : Area2D
 		{
 			playerSprite.Stop();
 		}
-		
-		var halfX = (ScreenSize.X / 2)-100;
+
+		var halfX = (ScreenSize.X / 2) - 100;
 		Position += velocity * (float)delta;
 		Position = new Vector2(
-			x: Mathf.Clamp(Position.X, 0-halfX,0+halfX),
+			x: Mathf.Clamp(Position.X, 0 - halfX, 0 + halfX),
 			y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
 		);
 	}
+
+	public void AddPoints(int points)
+	{
+        score += points;
+    }
 }

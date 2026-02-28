@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bkgvm5qhpal5f"]
 
 [ext_resource type="Script" uid="uid://bo8tbvf6pgimi" path="res://scripts/Player.cs" id="1_tpt06"]
+[ext_resource type="Script" uid="uid://b1td23w0tm4no" path="res://scripts/GameController.cs" id="1_wsy1r"]
 [ext_resource type="Texture2D" uid="uid://glasbxye2lt1" path="res://art/dog_walk.png" id="2_rgld7"]
 [ext_resource type="Texture2D" uid="uid://c7vorg6ee0gpu" path="res://art/background.png" id="3_0bgtt"]
+[ext_resource type="Texture2D" uid="uid://eplk4lcihvmj" path="res://art/pigman_spritesheet.png" id="5_nxsj3"]
+[ext_resource type="Script" uid="uid://c8t6vfrmqh5iw" path="res://scripts/PigmanController.cs" id="6_nxsj3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8pr3"]
 atlas = ExtResource("2_rgld7")
@@ -22,6 +25,11 @@ region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0fpt2"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a8pr3")
@@ -41,32 +49,174 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8pr3"]
-size = Vector2(36, 40)
+size = Vector2(93, 39)
 
-[node name="Node2D" type="Node2D" unique_id=1647223057]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho8j7"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gik4f"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niwnn"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxrhh"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3hmy"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o8cn"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6j1l"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gx8v"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21ufn"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyern"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hmyq"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w5mu"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p11e"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c676s"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b8oo"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_usxj8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho8j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gik4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niwnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxrhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3hmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o8cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6j1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gx8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21ufn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyern")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hmyq")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w5mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p11e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c676s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b8oo")
+}],
+"loop": false,
+"name": &"Standup",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxsj3"]
+radius = 48.0
+height = 120.0
+
+[node name="Game Scene" type="Node2D" unique_id=1647223057]
+script = ExtResource("1_wsy1r")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1333184391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0bgtt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1784869693]
 
 [node name="Player" type="Area2D" parent="." unique_id=1772675278]
 z_index = 1
 position = Vector2(0, 272)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_tpt06")
 Speed = 600
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=282322879]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player" unique_id=282322879]
 scale = Vector2(3.374, 3)
 sprite_frames = SubResource("SpriteFrames_0fpt2")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=226227958]
-position = Vector2(31, -13)
+[node name="PlayerCollision" type="CollisionShape2D" parent="Player" unique_id=226227958]
+position = Vector2(2.5, -12.5)
 shape = SubResource("RectangleShape2D_a8pr3")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1333184391]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_0bgtt")
+[node name="Pigman" type="Area2D" parent="." unique_id=1371432156]
+script = ExtResource("6_nxsj3")
+Speed = 500
+
+[node name="PigmanSprite" type="AnimatedSprite2D" parent="Pigman" unique_id=202908454]
+position = Vector2(0, -112)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_usxj8")
+animation = &"Run"
+
+[node name="PigmanCollision" type="CollisionShape2D" parent="Pigman" unique_id=1834463278]
+position = Vector2(1, -109)
+shape = SubResource("CapsuleShape2D_nxsj3")

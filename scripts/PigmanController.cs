@@ -1,0 +1,80 @@
+using Godot;
+using HelloGodot.scripts;
+using System;
+
+public partial class PigmanController : Area2D
+{
+	[Export]
+	public int Speed { get; set; } = 400;
+
+	private float targetX = 0f;
+
+	private float minX = 0f;
+	private float maxX = 0f;
+	private bool movingLeft = false;
+
+	private Vector2 screenSize;
+	private AnimatedSprite2D pigmanSprite;
+
+	private Random random = new Random(DateTime.Now.Millisecond);
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		screenSize = GetViewportRect().Size;
+		pigmanSprite = GetNode<AnimatedSprite2D>("PigmanSprite");
+
+		var halfX = (screenSize.X / 2) - 100;
+		minX = 0 - halfX;
+		maxX = halfX;
+
+		targetX = SetNewTarget();
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		if (pigmanSprite.Animation != "Run")
+			return;
+
+		//Target reached
+		if ((movingLeft && Position.X < targetX) || (!movingLeft && Position.X > targetX))
+		{
+			//Drop Bug
+			DropNewBug();
+
+			targetX = SetNewTarget();
+		}
+
+		var velocity = Vector2.Zero;
+		if (targetX < Position.X)
+		{
+			velocity.X = -1;
+			pigmanSprite.FlipH = false;
+		}
+		else
+		{
+			velocity.X = 1;
+			pigmanSprite.FlipH = true;
+		}
+
+		Position += velocity.Normalized() * Speed * (float)delta;		
+	}
+
+	private float SetNewTarget()
+	{
+		var newTarget = minX + (random.NextSingle() * (screenSize.X - 100));
+
+		movingLeft = newTarget < Position.X;
+		
+		GD.Print($"New X Target: {newTarget}");
+		return newTarget;
+	}
+
+	private void DropNewBug()
+	{
+		var newBug = new BugController();
+		newBug.Position = Position;
+		GetNode("..").AddChild(newBug);
+	}
+}
