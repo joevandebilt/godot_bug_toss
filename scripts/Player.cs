@@ -11,8 +11,6 @@ public partial class Player : Area2D
 
 	private AnimatedSprite2D playerSprite;
 
-	private int score = 0;
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -53,9 +51,4 @@ public partial class Player : Area2D
 			y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
 		);
 	}
-
-	public void AddPoints(int points)
-	{
-        score += points;
-    }
 }

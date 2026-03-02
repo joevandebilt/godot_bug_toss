@@ -51,6 +51,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8pr3"]
 size = Vector2(93, 39)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxsj3"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho8j7"]
 atlas = ExtResource("5_nxsj3")
 region = Rect2(0, 32, 32, 32)
@@ -113,6 +117,14 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_usxj8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxsj3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ho8j7")
@@ -209,14 +221,32 @@ shape = SubResource("RectangleShape2D_a8pr3")
 
 [node name="Pigman" type="Area2D" parent="." unique_id=1371432156]
 script = ExtResource("6_nxsj3")
-Speed = 500
+Speed = 800
 
 [node name="PigmanSprite" type="AnimatedSprite2D" parent="Pigman" unique_id=202908454]
 position = Vector2(0, -112)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_usxj8")
-animation = &"Run"
+animation = &"Idle"
 
 [node name="PigmanCollision" type="CollisionShape2D" parent="Pigman" unique_id=1834463278]
 position = Vector2(1, -109)
 shape = SubResource("CapsuleShape2D_nxsj3")
+
+[node name="Timer" type="Timer" parent="." unique_id=1462879230]
+
+[node name="TimeLabel" type="Label" parent="." unique_id=141017284]
+offset_left = 348.0
+offset_top = -324.0
+offset_right = 500.0
+offset_bottom = -301.0
+scale = Vector2(1.5, 1.5)
+text = "Time Remaining: 30"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=309323691]
+offset_left = 444.00003
+offset_top = -291.0
+offset_right = 532.0
+offset_bottom = -268.0
+scale = Vector2(1.5, 1.5)
+text = "Score: 0000"
