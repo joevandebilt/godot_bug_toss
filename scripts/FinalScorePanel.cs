@@ -1,7 +1,6 @@
 using Godot;
 using HelloGodot.Extensions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,13 +40,26 @@ public partial class FinalScorePanel : Node2D
 			using var reader = new StreamReader(highscores);
 			scores = reader.ReadToEnd().Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList();
 			if (scores.Any())
-				scores.RemoveAt(0);
+			{
+				var checksum = scores.First();
+				var checked_checksum = Md5Extensions.GetMd5Checksum(scores);
+
+				if (checked_checksum != checksum)
+				{
+					File.Copy(highscores, $"{highscores}_{checked_checksum}");
+                    scores = new List<string>();
+                }
+
+                scores.RemoveAt(0);
+			}
 		}
 		scores.Add($"{playerName.Text},{finalScore},{DateTime.Now.Ticks}");
 
-		using (var writer = new StreamWriter(highscores, append: false))
+		var new_checksum = Md5Extensions.GetMd5Checksum(scores);
+
+        using (var writer = new StreamWriter(highscores, append: false))
 		{
-			writer.WriteLine(Md5Extensions.GetMd5Checksum(scores));
+			writer.WriteLine(new_checksum);
 			scores.ForEach(s => writer.WriteLine(s));
 		}
 

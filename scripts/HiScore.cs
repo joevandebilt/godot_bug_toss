@@ -1,9 +1,12 @@
 using Godot;
 using HelloGodot.Extensions;
+using HelloGodot.models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
+using static System.Formats.Asn1.AsnWriter;
 
 public partial class HiScore : Control
 {
@@ -42,7 +45,7 @@ public partial class HiScore : Control
 				}
 				else
 				{
-					var entries = new List<string>();
+					var entries = new List<ScoreboardEntry>();
 					foreach (var entry in scores)
 					{
 						var parts = entry.Split(',');
@@ -53,10 +56,19 @@ public partial class HiScore : Control
 						var score = int.Parse(parts[1]);
 						var time = new DateTime(long.Parse(parts[2]));
 
-						entries.Add($"[cell]{score}[/cell][cell padding=100,0,100,0]{name}[/cell][cell]{DateTime.Now.Subtract(time).Days} days ago[/cell]");
+						entries.Add(new ScoreboardEntry
+						{
+							Name = name,
+							Score = score,
+							Created = time,
+						});
 					}
 
-					highScoreTable.Text = $"[table=3][cell][b]Score[/b][/cell][cell padding=100,0,100,0][b]Player[/b][/cell][cell][b]Time[/b][/cell]{string.Concat(entries)}[/table]";
+					var rows = string.Concat(
+						entries.OrderByDescending(e => e.Score)
+						.Select(e => $"[cell]{e.Score}[/cell][cell padding=100,0,100,0]{e.Name}[/cell][cell]{DateTime.Now.Subtract(e.Created).Days} days ago[/cell]")
+					);
+					highScoreTable.Text = $"[table=3][cell][b]Score[/b][/cell][cell padding=100,0,100,0][b]Player[/b][/cell][cell][b]Time[/b][/cell]{rows}[/table]";
 				}
 			}
 
