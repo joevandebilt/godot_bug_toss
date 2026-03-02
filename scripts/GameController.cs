@@ -4,17 +4,24 @@ using System;
 
 public partial class GameController : Node2D
 {
-	AnimatedSprite2D pigMan;
-	Timer gameTimer;
-	Label timeLabel;
-	Label scoreLabel;
+	private AnimatedSprite2D pigMan;
+	private Timer gameTimer;
+	private Label timeLabel;
+	private Label scoreLabel;
 
 
-    int timeRemaining = 30;
-	int score = 0;
+    private int timeRemaining = 30;
+	private int score = 0;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    [Signal]
+    public delegate void GameStartEventHandler();
+
+    [Signal]
+    public delegate void GameOverEventHandler(int finalScore);
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		pigMan = GetNode<AnimatedSprite2D>("Pigman/PigmanSprite");
 		pigMan.Animation = "Standup";
@@ -25,8 +32,7 @@ public partial class GameController : Node2D
 
     private void StartGame()
 	{
-		pigMan.Animation = "Run";
-		pigMan.Play();
+		EmitSignal(SignalName.GameStart);
 
 		timeLabel = GetNode<Label>("TimeLabel");
 
@@ -43,14 +49,14 @@ public partial class GameController : Node2D
 
 		if (timeRemaining <= 0)
 		{
-			GameOver();
+            GameEnding();
             gameTimer.Stop();
 		}
     }
 
-    private void GameOver()
+    private void GameEnding()
 	{
-		pigMan.Animation = "Idle";
+        EmitSignal(SignalName.GameOver, score);
 	}
 
     public void DropNewBug(Vector2 position)

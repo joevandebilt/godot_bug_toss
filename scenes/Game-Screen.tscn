@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c7vorg6ee0gpu" path="res://art/background.png" id="3_0bgtt"]
 [ext_resource type="Texture2D" uid="uid://eplk4lcihvmj" path="res://art/pigman_spritesheet.png" id="5_nxsj3"]
 [ext_resource type="Script" uid="uid://c8t6vfrmqh5iw" path="res://scripts/PigmanController.cs" id="6_nxsj3"]
+[ext_resource type="Script" uid="uid://c38haklfh0x8w" path="res://scripts/FinalScorePanel.cs" id="7_ho8j7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8pr3"]
 atlas = ExtResource("2_rgld7")
@@ -250,3 +251,40 @@ offset_right = 532.0
 offset_bottom = -268.0
 scale = Vector2(1.5, 1.5)
 text = "Score: 0000"
+
+[node name="ScoreCard" type="Node2D" parent="." unique_id=1641979202]
+z_index = 3
+script = ExtResource("7_ho8j7")
+
+[node name="Panel" type="Panel" parent="ScoreCard" unique_id=413303637]
+offset_left = -158.0
+offset_top = -11.0
+offset_right = 159.0
+offset_bottom = 102.0
+
+[node name="ResultsLabel" type="RichTextLabel" parent="ScoreCard/Panel" unique_id=1331617894]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 317.0
+offset_bottom = 68.0
+text = "You eat like a pig!
+Score: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName" type="LineEdit" parent="ScoreCard/Panel" unique_id=1558744139]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 76.0
+offset_right = 199.0
+offset_bottom = 107.0
+placeholder_text = "Player Name"
+max_length = 30
+
+[node name="SaveScoreButton" type="Button" parent="ScoreCard/Panel" unique_id=749155574]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 76.0
+offset_right = 315.0
+offset_bottom = 107.0
+text = "Submit Score"

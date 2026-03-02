@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>HelloGodot</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="scenes\" />
+  </ItemGroup>
 </Project>

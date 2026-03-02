@@ -31,6 +31,18 @@ public partial class PigmanController : Area2D
 		maxX = halfX;
 
 		targetX = SetNewTarget();
+
+		gameController.GameStart += () =>
+		{
+			pigmanSprite.Animation = "Run";
+			pigmanSprite.Play();
+		};
+
+		gameController.GameOver += (score) =>
+		{
+			pigmanSprite.Animation = "Idle";
+			pigmanSprite.Stop();
+		};
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
