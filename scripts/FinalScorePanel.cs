@@ -47,17 +47,17 @@ public partial class FinalScorePanel : Node2D
 				if (checked_checksum != checksum)
 				{
 					File.Copy(highscores, $"{highscores}_{checked_checksum}");
-                    scores = new List<string>();
-                }
+					scores = new List<string>();
+				}
 
-                scores.RemoveAt(0);
+				scores.RemoveAt(0);
 			}
 		}
 		scores.Add($"{playerName.Text},{finalScore},{DateTime.Now.Ticks}");
 
 		var new_checksum = Md5Extensions.GetMd5Checksum(scores);
 
-        using (var writer = new StreamWriter(highscores, append: false))
+		using (var writer = new StreamWriter(highscores, append: false))
 		{
 			writer.WriteLine(new_checksum);
 			scores.ForEach(s => writer.WriteLine(s));
