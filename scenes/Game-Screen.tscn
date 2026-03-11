@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://glasbxye2lt1" path="res://art/dog_walk.png" id="2_rgld7"]
 [ext_resource type="Texture2D" uid="uid://c7vorg6ee0gpu" path="res://art/background.png" id="3_0bgtt"]
 [ext_resource type="Texture2D" uid="uid://eplk4lcihvmj" path="res://art/pigman_spritesheet.png" id="5_nxsj3"]
+[ext_resource type="Script" uid="uid://c8t6vfrmqh5iw" path="res://scripts/PigmanController.cs" id="6_nxsj3"]
+[ext_resource type="Script" uid="uid://c38haklfh0x8w" path="res://scripts/FinalScorePanel.cs" id="7_ho8j7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8pr3"]
 atlas = ExtResource("2_rgld7")
@@ -47,6 +49,10 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8pr3"]
 size = Vector2(93, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxsj3"]
+atlas = ExtResource("5_nxsj3")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho8j7"]
 atlas = ExtResource("5_nxsj3")
@@ -110,6 +116,14 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_usxj8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxsj3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ho8j7")
@@ -202,13 +216,70 @@ position = Vector2(2.5, -12.5)
 shape = SubResource("RectangleShape2D_a8pr3")
 
 [node name="Pigman" type="Area2D" parent="." unique_id=1371432156]
+script = ExtResource("6_nxsj3")
+Speed = 800
 
 [node name="PigmanSprite" type="AnimatedSprite2D" parent="Pigman" unique_id=202908454]
 position = Vector2(0, -112)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_usxj8")
-animation = &"Run"
+animation = &"Idle"
 
 [node name="PigmanCollision" type="CollisionShape2D" parent="Pigman" unique_id=1834463278]
 position = Vector2(1, -109)
 shape = SubResource("CapsuleShape2D_nxsj3")
+
+[node name="Timer" type="Timer" parent="." unique_id=1462879230]
+
+[node name="TimeLabel" type="Label" parent="." unique_id=141017284]
+offset_left = 348.0
+offset_top = -324.0
+offset_right = 500.0
+offset_bottom = -301.0
+scale = Vector2(1.5, 1.5)
+text = "Time Remaining: 30"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=309323691]
+offset_left = 444.00003
+offset_top = -291.0
+offset_right = 532.0
+offset_bottom = -268.0
+scale = Vector2(1.5, 1.5)
+text = "Score: 0000"
+
+[node name="ScoreCard" type="Node2D" parent="." unique_id=1641979202]
+z_index = 3
+script = ExtResource("7_ho8j7")
+
+[node name="Panel" type="Panel" parent="ScoreCard" unique_id=413303637]
+offset_left = -158.0
+offset_top = -11.0
+offset_right = 159.0
+offset_bottom = 102.0
+
+[node name="ResultsLabel" type="RichTextLabel" parent="ScoreCard/Panel" unique_id=1331617894]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 317.0
+offset_bottom = 68.0
+text = "You eat like a pig!
+Score: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName" type="LineEdit" parent="ScoreCard/Panel" unique_id=1558744139]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 76.0
+offset_right = 199.0
+offset_bottom = 107.0
+placeholder_text = "Player Name"
+max_length = 30
+
+[node name="SaveScoreButton" type="Button" parent="ScoreCard/Panel" unique_id=749155574]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 76.0
+offset_right = 315.0
+offset_bottom = 107.0
+text = "Submit Score"

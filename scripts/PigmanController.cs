@@ -15,6 +15,7 @@ public partial class PigmanController : Area2D
 
 	private Vector2 screenSize;
 	private AnimatedSprite2D pigmanSprite;
+	private GameController gameController;
 
 	private Random random = new Random(DateTime.Now.Millisecond);
 
@@ -23,12 +24,25 @@ public partial class PigmanController : Area2D
 	{
 		screenSize = GetViewportRect().Size;
 		pigmanSprite = GetNode<AnimatedSprite2D>("PigmanSprite");
+		gameController = GetNode<GameController>("..");
 
 		var halfX = (screenSize.X / 2) - 100;
 		minX = 0 - halfX;
 		maxX = halfX;
 
 		targetX = SetNewTarget();
+
+		gameController.GameStart += () =>
+		{
+			pigmanSprite.Animation = "Run";
+			pigmanSprite.Play();
+		};
+
+		gameController.GameOver += (score) =>
+		{
+			pigmanSprite.Animation = "Idle";
+			pigmanSprite.Stop();
+		};
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,7 +55,7 @@ public partial class PigmanController : Area2D
 		if ((movingLeft && Position.X < targetX) || (!movingLeft && Position.X > targetX))
 		{
 			//Drop Bug
-			DropNewBug();
+			gameController.DropNewBug(Position);
 
 			targetX = SetNewTarget();
 		}
@@ -69,12 +83,5 @@ public partial class PigmanController : Area2D
 		
 		GD.Print($"New X Target: {newTarget}");
 		return newTarget;
-	}
-
-	private void DropNewBug()
-	{
-		var newBug = new BugController();
-		newBug.Position = Position;
-		GetNode("..").AddChild(newBug);
 	}
 }
