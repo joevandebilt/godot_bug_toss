@@ -23,6 +23,16 @@ func _ready() -> void:
 		_:
 			type = 1
 			
+	match type:
+		1:
+			worth = 5
+		2:
+			worth = 10
+		3:
+			worth = 15
+		4:
+			worth = 30
+			
 	print("Bug type: {0}".format([type]))
 	speed = randi_range(100, 300)
 	

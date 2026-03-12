@@ -14,8 +14,8 @@ const high_scores : String = "highscores.txt";
 func _ready():
 		hide()
 
-		game_conteoller = get_node("/root/Game Scene");
-		game_conteoller.GameOver.connect(show_final);
+		game_conteoller = get_node("/root/Game Scene")
+		game_conteoller.GameOver.connect(show_final)
 
 		submit_score_button = get_node("Panel/SaveScoreButton")
 		submit_score_button.pressed.connect(save_score)
@@ -24,35 +24,39 @@ func _ready():
 		results_label = get_node("Panel/ResultsLabel")
 
 func save_score():
-	#//Save high scores logic here
-	#var scores = new List<string>();
-	#if (File.Exists(highscores))
-	#{
-		#using var reader = new StreamReader(highscores);
-		#scores = reader.ReadToEnd().Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList();
-		#if (scores.Any())
-		#{
-			#var checksum = scores.First();
-			#var checked_checksum = Md5Extensions.GetMd5Checksum(scores);
-#
-			#if (checked_checksum != checksum)
-			#{
-				#File.Copy(highscores, $"{highscores}_{checked_checksum}");
-				#scores = new List<string>();
-			#}
-#
-			#scores.RemoveAt(0);
-		#}
-	#}
-	#scores.Add($"{playerName.Text},{finalScore},{DateTime.Now.Ticks}");
-#
-	#var new_checksum = Md5Extensions.GetMd5Checksum(scores);
-#
-	#using (var writer = new StreamWriter(highscores, append: false))
-	#{
-		#writer.WriteLine(new_checksum);
-		#scores.ForEach(s => writer.WriteLine(s));
-	#}
+	#Save high scores logic here
+	var scores : Array[String]
+	var file_access = FileAccess.new()
+	if FileAccess.file_exists(high_scores):
+		file_access.open(high_scores, FileAccess.READ_WRITE)
+				
+		var checksum = file_access.get_line()
+		var content = file_access.get_as_text()
+			
+		if checksum.length():
+			if content.md5_text() != checksum:
+				content = ""
+			
+			
+		if (scores.Any())
+		{
+			var checksum = scores.First();
+			var checked_checksum = Md5Extensions.GetMd5Checksum(scores);
+
+			if (checked_checksum != checksum)
+			{
+				File.Copy(highscores, $"{highscores}_{checked_checksum}");
+				scores = new List<string>();
+			}
+		}
+	}
+	scores.append($"{0},{1},{2}".format([player_name, final_score, ]));
+
+	var new_checksum = Md5Extensions.GetMd5Checksum(scores);
+
+	file_access.store_string(scores)
+
+	file_access.close()
 
 	get_tree().change_scene_to_file("res://scenes/Hi-Score.tscn");
 
