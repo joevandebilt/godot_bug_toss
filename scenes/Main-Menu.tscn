@@ -1,13 +1,71 @@
 [gd_scene format=3 uid="uid://dc2kj5vlfw1yd"]
 
-[ext_resource type="Texture2D" uid="uid://dsxs3ykruur48" path="res://art/new_game_button.png" id="1_estw7"]
-[ext_resource type="Script" uid="uid://5h34y02irtga" path="res://scripts/MainMenu.cs" id="1_im4cs"]
-[ext_resource type="Texture2D" uid="uid://bs0dptf64dwwn" path="res://art/quit_button_hover.png" id="2_15uo5"]
-[ext_resource type="Texture2D" uid="uid://t3p7kpkliw18" path="res://art/new_game_button_hover.png" id="2_mslyy"]
-[ext_resource type="Texture2D" uid="uid://bvf53edoudxkt" path="res://art/hi_scores_button.png" id="3_mslyy"]
-[ext_resource type="Texture2D" uid="uid://trlvlc3nqd4o" path="res://art/hi_scores_button_hover.png" id="4_chhbp"]
-[ext_resource type="Texture2D" uid="uid://c4g3p3g45rbqy" path="res://art/quit_button.png" id="4_im4cs"]
+[ext_resource type="Script" uid="uid://yqq450xdkf3v" path="res://scripts/main_menu.gd" id="1_40ee3"]
+[ext_resource type="Texture2D" uid="uid://bsrm1wku8ny6s" path="res://art/bug_2.png" id="2_nwme3"]
+[ext_resource type="Texture2D" uid="uid://c41f02b301x4f" path="res://art/bug_3.png" id="3_7hj8g"]
+[ext_resource type="Texture2D" uid="uid://3eljjtbn7s5d" path="res://art/bug_4.png" id="4_7hj8g"]
 [ext_resource type="Texture2D" uid="uid://civji80f0xjx5" path="res://art/title_128x128.png" id="8_chhbp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nwme3"]
+load_path = "res://.godot/imported/buttons.png-2bf2ccd62431ccdcb2a044b172a21e11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hj8g"]
+atlas = SubResource("CompressedTexture2D_nwme3")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6oi6w"]
+load_path = "res://.godot/imported/buttons.png-2bf2ccd62431ccdcb2a044b172a21e11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_884px"]
+atlas = SubResource("CompressedTexture2D_6oi6w")
+region = Rect2(0, 32, 128, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_40ee3"]
+load_path = "res://.godot/imported/buttons.png-2bf2ccd62431ccdcb2a044b172a21e11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lptr6"]
+atlas = SubResource("CompressedTexture2D_40ee3")
+region = Rect2(0, 64, 128, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jdvs2"]
+load_path = "res://.godot/imported/buttons.png-2bf2ccd62431ccdcb2a044b172a21e11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kle1k"]
+atlas = SubResource("CompressedTexture2D_jdvs2")
+region = Rect2(0, 96, 128, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ovj3v"]
+load_path = "res://.godot/imported/buttons.png-2bf2ccd62431ccdcb2a044b172a21e11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u1fl"]
+atlas = SubResource("CompressedTexture2D_ovj3v")
+region = Rect2(0, 128, 128, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7hj8g"]
+load_path = "res://.godot/imported/buttons.png-2bf2ccd62431ccdcb2a044b172a21e11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oi6w"]
+atlas = SubResource("CompressedTexture2D_7hj8g")
+region = Rect2(0, 160, 128, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_884px"]
+load_path = "res://.godot/imported/bug_1.png-950af8e7aea90eee97d882c8279263d1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwme3"]
+atlas = SubResource("CompressedTexture2D_884px")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ee3"]
+atlas = ExtResource("2_nwme3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdvs2"]
+atlas = ExtResource("3_7hj8g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7lvb"]
+atlas = ExtResource("4_7hj8g")
+region = Rect2(0, 0, 32, 32)
 
 [node name="MainMenu" type="Control" unique_id=812167860]
 layout_mode = 3
@@ -16,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_im4cs")
+script = ExtResource("1_40ee3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1692863028]
 layout_mode = 0
@@ -27,47 +85,113 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=167009685]
+[node name="ColumnsContainer" type="HBoxContainer" parent="MarginContainer" unique_id=213970523]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=213970523]
-layout_mode = 2
-size_flags_vertical = 6
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1736171710]
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/ColumnsContainer" unique_id=1736171710]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="New Game Button" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1188452488]
+[node name="New Game Button" type="TextureButton" parent="MarginContainer/ColumnsContainer/ButtonsContainer" unique_id=1188452488]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
-texture_normal = ExtResource("1_estw7")
-texture_hover = ExtResource("2_mslyy")
+texture_normal = SubResource("AtlasTexture_7hj8g")
+texture_hover = SubResource("AtlasTexture_884px")
 
-[node name="Hi Scores Button" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1963927841]
+[node name="Hi Scores Button" type="TextureButton" parent="MarginContainer/ColumnsContainer/ButtonsContainer" unique_id=1963927841]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
-texture_normal = ExtResource("3_mslyy")
-texture_hover = ExtResource("4_chhbp")
+texture_normal = SubResource("AtlasTexture_lptr6")
+texture_hover = SubResource("AtlasTexture_kle1k")
 
-[node name="Quit Button" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1324532257]
+[node name="Quit Button" type="TextureButton" parent="MarginContainer/ColumnsContainer/ButtonsContainer" unique_id=1324532257]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 action_mode = 0
-texture_normal = ExtResource("4_im4cs")
-texture_hover = ExtResource("2_15uo5")
+texture_normal = SubResource("AtlasTexture_4u1fl")
+texture_hover = SubResource("AtlasTexture_6oi6w")
 
-[node name="Game Logo" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=301881003]
+[node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/ColumnsContainer" unique_id=384720704]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/ColumnsContainer/ScoreContainer" unique_id=975617023]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Collect Bugs"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RedGroup" type="HBoxContainer" parent="MarginContainer/ColumnsContainer/ScoreContainer" unique_id=1677201754]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RedBug" type="TextureRect" parent="MarginContainer/ColumnsContainer/ScoreContainer/RedGroup" unique_id=1416714046]
+layout_mode = 2
+texture = SubResource("AtlasTexture_nwme3")
+
+[node name="RedPoints" type="Label" parent="MarginContainer/ColumnsContainer/ScoreContainer/RedGroup" unique_id=436025389]
+layout_mode = 2
+text = "5 points"
+vertical_alignment = 2
+
+[node name="GreenGroup" type="HBoxContainer" parent="MarginContainer/ColumnsContainer/ScoreContainer" unique_id=1590081297]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GreenBug" type="TextureRect" parent="MarginContainer/ColumnsContainer/ScoreContainer/GreenGroup" unique_id=1890048048]
+layout_mode = 2
+texture = SubResource("AtlasTexture_40ee3")
+
+[node name="GreenPoints" type="Label" parent="MarginContainer/ColumnsContainer/ScoreContainer/GreenGroup" unique_id=1773902601]
+layout_mode = 2
+size_flags_vertical = 1
+text = "10 points"
+vertical_alignment = 2
+
+[node name="BlueGroup" type="HBoxContainer" parent="MarginContainer/ColumnsContainer/ScoreContainer" unique_id=1382998255]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BlueBug" type="TextureRect" parent="MarginContainer/ColumnsContainer/ScoreContainer/BlueGroup" unique_id=2007941343]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jdvs2")
+
+[node name="BluePoints" type="Label" parent="MarginContainer/ColumnsContainer/ScoreContainer/BlueGroup" unique_id=1546997074]
+layout_mode = 2
+size_flags_vertical = 1
+text = "15 points"
+vertical_alignment = 2
+
+[node name="SpecialGroup" type="HBoxContainer" parent="MarginContainer/ColumnsContainer/ScoreContainer" unique_id=2083798312]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpecialBug" type="TextureRect" parent="MarginContainer/ColumnsContainer/ScoreContainer/SpecialGroup" unique_id=1435261240]
+layout_mode = 2
+texture = SubResource("AtlasTexture_h7lvb")
+
+[node name="SpecialPoints" type="Label" parent="MarginContainer/ColumnsContainer/ScoreContainer/SpecialGroup" unique_id=1748509594]
+layout_mode = 2
+size_flags_vertical = 1
+text = "30 points"
+vertical_alignment = 2
+
+[node name="Game Logo" type="TextureRect" parent="MarginContainer/ColumnsContainer" unique_id=301881003]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("8_chhbp")
 
-[node name="Version Number" type="Label" parent="MarginContainer/VBoxContainer" unique_id=706792913]
+[node name="Version Number" type="Label" parent="MarginContainer" unique_id=706792913]
 layout_mode = 2
-text = "Version 0.1
-Joeborder Games"
-horizontal_alignment = 1
+size_flags_vertical = 8
+text = "Version 0.2
+Borderpost Games 2026"
 vertical_alignment = 2

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ijvor523u1s1"]
+
+[ext_resource type="SpriteFrames" uid="uid://cj1fdcvetojnc" path="res://sprites/bug_animations.tres" id="1_578mr"]
+[ext_resource type="Script" uid="uid://bt6krlwcx7uq7" path="res://scripts/bug_controller.gd" id="1_v4w37"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v4w37"]
+radius = 17.0
+
+[node name="Bug" type="Area2D" unique_id=857418866]
+scale = Vector2(2, 2)
+script = ExtResource("1_v4w37")
+
+[node name="BugCollision" type="CollisionShape2D" parent="." unique_id=931248285]
+shape = SubResource("CircleShape2D_v4w37")
+
+[node name="BugSprite" type="AnimatedSprite2D" parent="." unique_id=1342290000]
+sprite_frames = ExtResource("1_578mr")
+animation = &"bug_1"

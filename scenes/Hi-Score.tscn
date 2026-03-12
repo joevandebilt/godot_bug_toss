@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhptx6y5veyen"]
 
-[ext_resource type="Script" uid="uid://dbeijps2uxf18" path="res://scripts/HiScore.cs" id="1_28yeg"]
+[ext_resource type="Script" uid="uid://b687uqpll16hh" path="res://scripts/hiscore_controller.gd" id="1_28yeg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gagxw"]
 bg_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
