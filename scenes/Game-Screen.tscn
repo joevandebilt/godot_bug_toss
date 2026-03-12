@@ -187,6 +187,7 @@ radius = 48.0
 height = 120.0
 
 [node name="Game Scene" type="Node2D" unique_id=1647223057]
+script = ExtResource("1_wsy1r")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1333184391]
 anchors_preset = 15

@@ -9,7 +9,7 @@ var results_label : RichTextLabel
 
 var final_score : int = 0
 
-const high_scores : String = "highscores.txt";
+const high_scores : String = "res://highscores.json";
 
 func _ready():
 		hide()
@@ -25,38 +25,39 @@ func _ready():
 
 func save_score():
 	#Save high scores logic here
-	var scores : Array[String]
-	var file_access = FileAccess.new()
+	var scores : Array[HiScore]
 	if FileAccess.file_exists(high_scores):
-		file_access.open(high_scores, FileAccess.READ_WRITE)
-				
-		var checksum = file_access.get_line()
-		var content = file_access.get_as_text()
-			
-		if checksum.length():
-			if content.md5_text() != checksum:
-				content = ""
-			
-			
-		if (scores.Any())
-		{
-			var checksum = scores.First();
-			var checked_checksum = Md5Extensions.GetMd5Checksum(scores);
+		var read_file = FileAccess.open(high_scores, FileAccess.READ)
+		var json = JSON.parse_string(read_file.get_as_text())
+		read_file.close()
+		
+		if json:
+			for entry in json:
+				var hs = HiScore.new()	
+				hs.name = entry["name"]
+				hs.score = entry["score"]
+				hs.timestamp = entry["timestamp"]
+				scores.append(hs)
+	
+	var new_score = HiScore.new()
+	new_score.name = player_name.text
+	new_score.score = final_score
+	new_score.timestamp = Time.get_unix_time_from_system()
+	scores.append(new_score);
 
-			if (checked_checksum != checksum)
-			{
-				File.Copy(highscores, $"{highscores}_{checked_checksum}");
-				scores = new List<string>();
-			}
-		}
-	}
-	scores.append($"{0},{1},{2}".format([player_name, final_score, ]));
-
-	var new_checksum = Md5Extensions.GetMd5Checksum(scores);
-
-	file_access.store_string(scores)
-
-	file_access.close()
+	# Save hi-scores
+	var data = []
+	for hs in scores:
+		data.append({
+			"name": hs.name,
+			"score": hs.score,
+			"timestamp": hs.timestamp
+		})
+	
+	
+	var write_file = FileAccess.open(high_scores, FileAccess.WRITE)
+	write_file.store_string(JSON.stringify(data))
+	write_file.close()
 
 	get_tree().change_scene_to_file("res://scenes/Hi-Score.tscn");
 

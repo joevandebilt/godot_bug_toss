@@ -28,7 +28,7 @@ func _ready() -> void:
 	game_timer = get_node("Timer")
 
 func _process(_delta: float) -> void:
-	time_label.text = "Time Remaining: {0}".format([round(game_timer.time_left)])
+	time_label.text = "Time Remaining: {0}".format([roundi(game_timer.time_left)])
 	score_label.text = "Score: {0}".format([player.score])
 
 func start_game():

@@ -2,7 +2,7 @@ class_name PigmanController
 
 extends Area2D
 
-@export var Speed : int = 400
+@export var Speed : int = 800
 
 var target_x : float = 0
 var min_x : float = 0
