@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Godot-Bug-Toss"
 run/main_scene="uid://dc2kj5vlfw1yd"
-config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
