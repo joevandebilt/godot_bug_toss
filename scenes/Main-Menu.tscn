@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dc2kj5vlfw1yd"]
 
+[ext_resource type="Script" uid="uid://yqq450xdkf3v" path="res://scripts/main_menu.gd" id="1_40ee3"]
 [ext_resource type="Texture2D" uid="uid://dsxs3ykruur48" path="res://art/new_game_button.png" id="1_estw7"]
-[ext_resource type="Script" uid="uid://5h34y02irtga" path="res://scripts/MainMenu.cs" id="1_im4cs"]
 [ext_resource type="Texture2D" uid="uid://bs0dptf64dwwn" path="res://art/quit_button_hover.png" id="2_15uo5"]
 [ext_resource type="Texture2D" uid="uid://t3p7kpkliw18" path="res://art/new_game_button_hover.png" id="2_mslyy"]
 [ext_resource type="Texture2D" uid="uid://bvf53edoudxkt" path="res://art/hi_scores_button.png" id="3_mslyy"]
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_im4cs")
+script = ExtResource("1_40ee3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1692863028]
 layout_mode = 0

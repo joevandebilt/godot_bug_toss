@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bkgvm5qhpal5f"]
-
-[ext_resource type="Script" uid="uid://bo8tbvf6pgimi" path="res://scripts/Player.cs" id="1_tpt06"]
-[ext_resource type="Script" uid="uid://b1td23w0tm4no" path="res://scripts/GameController.cs" id="1_wsy1r"]
+[ext_resource type="Script" uid="uid://b5vadvbtpisd3" path="res://scripts/game_controller.gd" id="1_wsy1r"]
 [ext_resource type="Texture2D" uid="uid://glasbxye2lt1" path="res://art/dog_walk.png" id="2_rgld7"]
 [ext_resource type="Texture2D" uid="uid://c7vorg6ee0gpu" path="res://art/background.png" id="3_0bgtt"]
+[ext_resource type="Script" uid="uid://dqaaem2q0lof" path="res://scripts/player_controller.gd" id="3_ho8j7"]
+[ext_resource type="Script" uid="uid://f44bhfdpdfkc" path="res://scripts/pigman_controller.gd" id="5_gik4f"]
 [ext_resource type="Texture2D" uid="uid://eplk4lcihvmj" path="res://art/pigman_spritesheet.png" id="5_nxsj3"]
-[ext_resource type="Script" uid="uid://c8t6vfrmqh5iw" path="res://scripts/PigmanController.cs" id="6_nxsj3"]
-[ext_resource type="Script" uid="uid://c38haklfh0x8w" path="res://scripts/FinalScorePanel.cs" id="7_ho8j7"]
+[ext_resource type="Script" uid="uid://bsdlnxwkwtw3n" path="res://scripts/scorecard_controller.gd" id="7_ho8j7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8pr3"]
 atlas = ExtResource("2_rgld7")
@@ -207,8 +206,7 @@ texture = ExtResource("3_0bgtt")
 z_index = 1
 position = Vector2(0, 272)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_tpt06")
-Speed = 600
+script = ExtResource("3_ho8j7")
 metadata/_edit_group_ = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player" unique_id=282322879]
@@ -221,8 +219,7 @@ position = Vector2(2.5, -12.5)
 shape = SubResource("RectangleShape2D_a8pr3")
 
 [node name="Pigman" type="Area2D" parent="." unique_id=1371432156]
-script = ExtResource("6_nxsj3")
-Speed = 800
+script = ExtResource("5_gik4f")
 
 [node name="PigmanSprite" type="AnimatedSprite2D" parent="Pigman" unique_id=202908454]
 position = Vector2(0, -112)
